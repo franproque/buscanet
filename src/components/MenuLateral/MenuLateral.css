@@ -1,0 +1,98 @@
+.container--menu--lateral{
+height: 100%;
+width: 250px;
+padding-left: 5px;
+}
+
+
+.container--categorias h3{
+    font-weight: bold;
+    margin-bottom: 10px ;
+}
+.container--categorias{
+    margin-bottom: 20px;
+}
+.container--categorias ul{
+    list-style: none;
+    width: 100%;
+}
+.container--categorias ul li{
+
+    display: flex;
+    font-size: 16pxx;
+    flex-direction: row;
+    width: inherit;
+   
+    margin-bottom: 7px;
+    padding-bottom: 8px ;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(165, 160, 160);
+}
+.container--categorias button{
+    margin-top: 5px;
+    width: 100%;
+    height: 30px;
+    color: rgb(28, 164, 243);
+    border:1px solid rgb(28, 164, 243);
+    border-radius: 10px;
+}
+
+.container--precos{
+    width: 100%;
+    display: block;
+    height:90px ;
+    margin-bottom: 20px;
+}
+
+
+
+.container--precos--main{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    width: inherit;
+    height: inherit;
+}
+.container--preco--inicial input{
+    margin-top: 5px;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border:none;
+    padding-left: 5px;
+    outline: 0;
+    background-color: rgb(211, 197, 197);
+    
+}
+.container--preco--final input{
+    margin-top: 5px;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border:none;
+    padding-left: 5px;
+    outline: 0;
+    background-color: rgb(211, 197, 197);
+
+}
+.container--precos--main label{
+    font-size: 15px;
+}
+
+.container--lojas{
+    width: 100%;
+    height: auto;
+}
+.container--lojas ul{
+    width: inherit;
+    margin-top: 15px;
+    height: auto;
+}
+.container--lojas ul li{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+}
+.container--lojas ul li input{
+    margin-right: 7px;
+}
