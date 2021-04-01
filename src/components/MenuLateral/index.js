@@ -5,7 +5,7 @@ import Precos from './Precos'
 import Lojas from './Lojas'
 export default function(){
 const [categoria,setCategoria]=useState(['Artigos','Beleza','Eletronicos'])
-const [lojas,setLojas]=useState(['Americanas','Amazon','Magazine Luiza'])
+const [lojas,setLojas]=useState(['Americanas','Amazon','Mercado Livre'])
 return(
 
 <div className="container--menu--lateral">
