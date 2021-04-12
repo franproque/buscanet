@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -20,11 +20,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
-
+import Busca from '../../fetch';
 function createData(product, company, price) {
   return { product, company, price};
 }
-
+/*
 const rows = [
   createData('GTX 1660 TI', 'Amazon', 50),
   createData('AMD Rx 570', 'Amazon', 50),
@@ -36,7 +36,7 @@ const rows = [
   createData('Cupcake', 'Amazon', 50),
   createData('Cupcake', 'Amazon', 50),
 ];
-
+*/
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -86,7 +86,7 @@ function EnhancedTableHead(props) {
             inputProps={{ 'aria-label': 'select all desserts' }}
           />
         </TableCell>
-        {headCells.map((headCell) => (
+        {headCells.map((headCell,key) => (
           <TableCell
             key={headCell.id}
             align={headCell.numeric ? 'right' : 'left'}
@@ -215,13 +215,25 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
+  const [rows,setRows]= React.useState([]);
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
+React.useEffect(()=>{
+  Busca.then(data=>{
+    console.log(data.products['0'])
+    var rowsVolta=[]
+    
+    data.products[0]['tv'].map((element,p)=>(
+      rowsVolta.push(createData(element.title,element.best_price_shop.title, element.best_price))
+    ) ) 
+    
+    setRows(rowsVolta);
+  })
 
+},[]);
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
       const newSelecteds = rows.map((n) => n.name);
@@ -263,7 +275,6 @@ export default function EnhancedTable() {
   const handleChangeDense = (event) => {
     setDense(event.target.checked);
   };
-
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
